@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './login.css';
 import axios  from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
-
+import CONST from '../global';
 
 class Login extends Component {
 
@@ -14,15 +14,19 @@ class Login extends Component {
         this.login = this.login.bind(this);
 	}
 
+
+
 	login(){
 		let obj = {email : this.state.email, password : this.state.password};
 		let self = this;
-		axios.post('http://52.66.185.83:4000/api/login', obj)
+		axios.post(CONST.apiBaseURL+'api/login', obj)
 		  .then(function (response) {
 		    console.log(response);
 		    if(response.data.status==200){
 		    	toast.dismiss();
+		    	localStorage.setItem('user', JSON.stringify(response.data));
 		    	toast.success('You have successfully login!.');
+		    	self.props.history.push('/home')
 		    }
 		    else{
 		    	toast.dismiss();
@@ -44,6 +48,13 @@ class Login extends Component {
     handlePassword(event) {
       this.setState({password: event.target.value});
     }
+    
+    handleKeyPress = (event) => {
+	  if(event.key == 'Enter'){
+	    this.login();
+		  }
+	}
+
 
 	render(){
 		return (
@@ -56,7 +67,7 @@ class Login extends Component {
         onChange={this.handleChange} id="userName" class="form-control input-sm chat-input" placeholder="username" />
 				            <br/>
 				            <input type="password" value={this.state.password}
-        onChange={this.handlePassword} id="userPassword" class="form-control input-sm chat-input" placeholder="password" />
+        onChange={this.handlePassword} id="userPassword" class="form-control input-sm chat-input" placeholder="password" onKeyPress={this.handleKeyPress}/>
 				            <br/>
 				            <div class="wrapper">
 				            <span class="group-btn">     

@@ -1,7 +1,9 @@
 
-class Constant {
-  apiBaseURL = "http://52.66.185.83:4000";
-}
+const  apiBaseURL = "http://52.66.185.83:4000/";
+
+var obj = { 
+    apiBaseURL:apiBaseURL
+};
 
 
-export default Constant;
+module.exports = obj;
