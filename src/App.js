@@ -6,7 +6,8 @@ import Signup from './signup/signup';
 import Footer from './footer/footer';
 import Home from './home/home';
 import Profile from './profile/profile';
-import Event from './event/event';
+import CreateEvent from './event/event';
+import viewEvent from './event/view-event';
 import Landing from  './landing/landing';
 import { Modal, Button } from 'antd';
 
@@ -30,7 +31,7 @@ class App extends Component {
     super(props);
       this.props = { isloggedIn : true}
       // this.state = {visible: false, loggedIn : false };
-      this.state = { isAuthenticated: false, user: null, token: ''};
+      this.state = { isAuthenticated: false, user: null, token: '', isloggedIn : true};
   }
 
    logout = () => {
@@ -111,7 +112,8 @@ class App extends Component {
               <Route path="/signup" component={Signup} />
               <Route path="/home" component={Home} />
               <Route path="/profile" component={Profile} />
-              <Route path="/event" component={Event} />
+              <Route path="/event" component={CreateEvent} />
+              <Route path="/viewevent" component={viewEvent} />
           </div>
         </Router>
         

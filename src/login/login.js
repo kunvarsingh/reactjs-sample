@@ -37,10 +37,7 @@ class Login extends Component {
 		  .catch(function (error) {
 		    console.log(error);
 		  });
-
 	}
-	
-	
     
     handleChange(event) {
       this.setState({email: event.target.value});
@@ -54,7 +51,6 @@ class Login extends Component {
 	    this.login();
 		  }
 	}
-
 
 	render(){
 		return (
