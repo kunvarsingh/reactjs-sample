@@ -81,7 +81,7 @@ class App extends Component {
       
       <div className="App">
       <h1 className="App-title">Welcome to Digital Library!.</h1>
-        <ToastContainer autoClose={5000}/>
+        <ToastContainer autoClose={2600}/>
 
         {/*<div>
         <Button type="primary" onClick={this.showModal}>Open</Button>
